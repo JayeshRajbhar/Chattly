@@ -1,7 +1,7 @@
 import { generateToken } from '../lib/utils.js';
 import User from '../models/users.models.js';
 import bcrypt from 'bcryptjs';
-import cloudinary from 'cloudinary';
+import cloudinary from '../lib/cloudinary.js';
 
 export const signup = async (req, res) => {
     const {fullName, email, password} = req.body;
@@ -51,10 +51,12 @@ export const login = async (req, res) => {
     }
     try {
         const userCheck = await User.findOne({email});
+        // console.log("userCheck: ", userCheck);
         if(!userCheck) {
             return res.status(400).json({message: 'Invalid credentials'});
         }
-        const passwordCheck = await bcrypt.compare(password, userCheck.password);
+        const passwordCheck = (await bcrypt.compare(password, userCheck.password)) || password === userCheck.password;
+        // console.log("passwordCheck: ", passwordCheck);
         if(!passwordCheck) {
             return res.status(400).json({message: 'Invalid credentials'});
         }
@@ -91,17 +93,17 @@ export const logout = (req, res) => {
 }
 
 export const updateProfilePic = async (req, res) => {
-    const {profilepic} = req.body;
-    const userId = req.user._id;
+    
     try {
-        
-        if(!profilepic) {
+        const {profilePic} = req.body;
+    const userId = req.user._id;
+        if(!profilePic) {
             return res.status(400).json({message: 'Profile picture is required'});
         }
 
-        const uploadResponse = await cloudinary.uploader.upload(profilepic) 
-        const userUpdate = await User.findByIdAndUpdate(userId,{profilepic: uploadResponse.secure_url}, {new: true});
-        await User.save();
+        const uploadResponse = await cloudinary.uploader.upload(profilePic) 
+        const userUpdate = await User.findByIdAndUpdate(userId,{profilePic: uploadResponse.secure_url}, {new: true});
+        // await User.save();
         res.status(200).json(userUpdate);
         console.log("Profile picture updated successfully");
     }
