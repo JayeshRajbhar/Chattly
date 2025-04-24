@@ -34,8 +34,14 @@ export const useChatStore = create((set, get) => ({
       set({ isMessagesLoading: false });
     }
   },
+
   sendMessage: async (messageData) => {
     const { selectedUser, messages } = get();
+    if (!selectedUser) {
+      toast.error("No user selected");
+      return;
+    }
+  
     try {
       const res = await axiosInstance.post(`/messages/send/${selectedUser._id}`, messageData);
       set({ messages: [...messages, res.data] });
@@ -53,9 +59,8 @@ export const useChatStore = create((set, get) => ({
     const socket = useAuthStore.getState().socket;
 
     socket.on("newMessage", (newMessage) => {
-      const isMessageSentFromSelectedUser = newMessage.senderId === selectedUser._id;
+      const isMessageSentFromSelectedUser = newMessage.sender === selectedUser._id || newMessage.receiver === selectedUser._id;
       if (!isMessageSentFromSelectedUser) return;
-
       set({
         messages: [...get().messages, newMessage],
       });

@@ -30,13 +30,15 @@ const MessageInput = () => {
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
-    if (!text.trim() && !imagePreview) return;
+    if (!text.trim() && !imagePreview) return "Please enter a message or select an image";
 
     try {
+      // console.log("Sending message:", { text, image: imagePreview });
       await sendMessage({
         text: text.trim(),
         image: imagePreview,
       });
+      // console.log("Message sent successfully");
     } catch (error) {
       console.error("Failed to send message:", error);
     } finally{
@@ -95,7 +97,7 @@ const MessageInput = () => {
         </div>
         <button
           type="submit"
-          className="btn btn-sm btn-circle"
+          className="btn btn-sm btn-circle text-emerald-500"
           disabled={!text.trim() && !imagePreview}
         >
           <Send size={22} />
