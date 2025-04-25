@@ -51,12 +51,10 @@ export const login = async (req, res) => {
     }
     try {
         const userCheck = await User.findOne({email});
-        // console.log("userCheck: ", userCheck);
         if(!userCheck) {
             return res.status(400).json({message: 'Invalid credentials'});
         }
         const passwordCheck = (await bcrypt.compare(password, userCheck.password)) || password === userCheck.password;
-        // console.log("passwordCheck: ", passwordCheck);
         if(!passwordCheck) {
             return res.status(400).json({message: 'Invalid credentials'});
         }
@@ -103,7 +101,6 @@ export const updateProfilePic = async (req, res) => {
 
         const uploadResponse = await cloudinary.uploader.upload(profilePic) 
         const userUpdate = await User.findByIdAndUpdate(userId,{profilePic: uploadResponse.secure_url}, {new: true});
-        // await User.save();
         res.status(200).json(userUpdate);
         console.log("Profile picture updated successfully");
     }

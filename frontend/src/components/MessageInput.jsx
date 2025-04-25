@@ -33,12 +33,10 @@ const MessageInput = () => {
     if (!text.trim() && !imagePreview) return "Please enter a message or select an image";
 
     try {
-      // console.log("Sending message:", { text, image: imagePreview });
       await sendMessage({
         text: text.trim(),
         image: imagePreview,
       });
-      // console.log("Message sent successfully");
     } catch (error) {
       console.error("Failed to send message:", error);
     } finally{

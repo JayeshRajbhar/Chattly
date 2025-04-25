@@ -4,7 +4,6 @@ import moongoose from "mongoose";
 import User from "../models/users.models.js";
 
 const seedUsers = [
-  // Female Users
   {
     email: "emma.thompson@example.com",
     fullName: "Emma Thompson",
@@ -54,7 +53,6 @@ const seedUsers = [
     profilePic: "https://randomuser.me/api/portraits/women/8.jpg",
   },
 
-  // Male Users
   {
     email: "james.anderson@example.com",
     fullName: "James Anderson",
@@ -116,9 +114,8 @@ const connectDB = async () => {
     console.log('MongoDB connected successfully: ', connect.connection.host);
   } catch (error) {
     console.error('MongoDB connection failed:', error.message);
-    process.exit(1); // Exit process with failure
+    process.exit(1);
   }
 };
-// Call the function
 seedDatabase();
 

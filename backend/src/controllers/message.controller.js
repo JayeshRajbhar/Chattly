@@ -7,7 +7,6 @@ export const getUsersForSidebar = async (req, res) => {
   try {
     const loggedInUserId = req.user._id;
     const filteredUsers = await User.find({ _id: { $ne: loggedInUserId } }).select('-password -__v');
-    // console.log('Filtered Users: ', filteredUsers);
     res.status(200).json(filteredUsers);
 } catch (error) {
     console.error('Error in getUsersForSidebar: ', error.message);
@@ -37,8 +36,6 @@ export const sendMessage = async (req, res) => {
     const { id: receiverId } = req.params;
     const senderId = req.user._id;
     const { text, image } = req.body;
-    // console.log('Sender ID: ', senderId);
-    // console.log('Receiver ID: ', receiverId);
     let imageUrl;
     if (image) {
         const uploadResponse = await cloudinary.uploader.upload(image)
@@ -53,14 +50,11 @@ export const sendMessage = async (req, res) => {
     });
 
     const response = await newMessage.save();
-    // console.log('Message saved: ', response);
     res.status(200).json(response);
 
     const receiverSocketId = getReceiverSocketId(receiverId);
-    // console.log('Receiver Socket ID: ', receiverSocketId);
     if (receiverSocketId) {
       io.to(receiverSocketId).emit("newMessage", newMessage);
-      // console.log('Socket ID found, message sent to receiver');
     }
 
   } catch (error) {
