@@ -16,6 +16,10 @@ export const getUsersForSidebar = async (req, res) => {
 
 export const getMessages = async (req, res) => {
   try {
+    if (!req.params.id) {
+      console.error('ID parameter is missing in getMessages controller');
+      return res.status(400).json({ message: 'ID parameter is required' });
+    }
     const { id:userToChatId } = req.params;
     const senderId = req.user._id;
     const messages = await Message.find({
@@ -33,6 +37,10 @@ export const getMessages = async (req, res) => {
 
 export const sendMessage = async (req, res) => {
   try {
+    if (!req.params.id) {
+      console.error('ID parameter is missing in sendMessage controller');
+      return res.status(400).json({ message: 'ID parameter is required' });
+    }
     const { id: receiverId } = req.params;
     const senderId = req.user._id;
     const { text, image } = req.body;

@@ -25,19 +25,20 @@ app.use(cors({
 app.use('/api/auth',authRoutes);
 app.use('/api/messages',messageRoutes);
 
+// Try modifying this section in index.js
 if(process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../frontend/dist')));
   
   app.get('*', (req, res) => {
-  const filePath = path.join(__dirname, '../frontend/dist/index.html');
-  res.sendFile(filePath, (err) => {
-    if (err) {
-      console.error('Error sending file:', err);
-      res.status(500).send('Error loading the application');
-    }
-  });
+    // Use absolute path to avoid path-to-regexp issues
+    res.sendFile(path.resolve(__dirname, '../frontend/dist/index.html'));
   });
 }
+
+app.use((req, res, next) => {
+  console.log(`Incoming request: ${req.method} ${req.url}`);
+  next();
+});
 
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
