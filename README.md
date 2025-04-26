@@ -126,7 +126,7 @@ We welcome contributions! Here's how:
 
 - **Email**: [jayeshrajbhar30@gmail.com](mailto:jayeshrajbhar30@gmail.com)  
 - **GitHub**: [JayeshRajbhar](https://github.com/JayeshRajbhar)  
-- **LinkedIn**: [jayesh rajbhar](www.linkedin.com/in/jayesh-rajbhar-7042a6346)
+- **LinkedIn**: [jayesh rajbhar](https://www.linkedin.com/in/jayesh-rajbhar-7042a6346)
 
 ---
 
