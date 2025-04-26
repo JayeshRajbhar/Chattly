@@ -5,7 +5,7 @@
 A sleek, full-featured chat application built with modern web technologies for seamless communication.
 
 [![Live Demo](https://img.shields.io/badge/%F0%9F%94%97-Live_Demo-3b82f6?style=for-the-badge)](https://chattly-asdl.onrender.com)
-[![GitHub Stars](https://img.shields.io/github/stars/your-username/Chattly?style=for-the-badge)](https://github.com/your-username/Chattly)
+[![GitHub Stars](https://img.shields.io/github/stars/JayeshRajbhar/Chattly?style=for-the-badge)](https://github.com/JayeshRajbhar/Chattly)
 
 ## ✨ Key Features
 
@@ -76,7 +76,7 @@ Chattly/
 
 1. **Clone the repo**:
    ```bash
-   git clone https://github.com/your-username/Chattly.git
+   git clone https://github.com/JayeshRajbhar/Chattly.git
    cd Chattly
    ```
 
@@ -124,9 +124,9 @@ We welcome contributions! Here's how:
 
 ## 📬 Get in Touch
 
-- **Email**: [your.email@example.com](mailto:your.email@example.com)  
-- **GitHub**: [@your-username](https://github.com/your-username)  
-- **LinkedIn**: [Your Name](https://linkedin.com/in/your-profile)
+- **Email**: [jayeshrajbhar30@gmail.com](mailto:jayeshrajbhar30@gmail.com)  
+- **GitHub**: [JayeshRajbhar](https://github.com/JayeshRajbhar)  
+- **LinkedIn**: [jayesh rajbhar](www.linkedin.com/in/jayesh-rajbhar-7042a6346)
 
 ---
 
