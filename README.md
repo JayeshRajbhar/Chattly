@@ -108,9 +108,9 @@ Chattly/
 
 | Feature            | Preview |
 |--------------------|---------|
-| **Login Screen**   | ![Login](https://via.placeholder.com/400x225/3b82f6/ffffff?text=Login+Screen) |
-| **Chat Interface** | ![Chat](https://via.placeholder.com/400x225/3b82f6/ffffff?text=Chat+Window) |
-| **Profile Settings** | ![Profile](https://via.placeholder.com/400x225/3b82f6/ffffff?text=User+Profile) |
+| **Login Screen**   | ![Login](/frontend/public/Login.png) |
+| **Chat Interface** | ![Chat](/frontend/public/Home.png) |
+| **Profile Settings** | ![Profile](/frontend/public/Profile.png) |
 
 ## 🤝 How to Contribute
 
